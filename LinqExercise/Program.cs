@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.VisualBasic;
+using System.Xml.Schema;
 
 namespace LinqExercise
 {
@@ -19,16 +21,33 @@ namespace LinqExercise
              * Push to your github when completed!
              * 
              */
-
+            var printer = new PrintArray(); 
+            Console.WriteLine("Here is a list of numbers and a few things that we can do with them.\n");
+            printer.Print(numbers);
+            
             //TODO: Print the Sum of numbers
+            Console.Write("\nThe sum of numbers in the list is: ");
+            Console.WriteLine(numbers.Sum(x => x));
 
             //TODO: Print the Average of numbers
+            Console.Write("\nThe average of the numbers in the list is: ");
+            Console.WriteLine(numbers.Average(x => x));
 
             //TODO: Order numbers in ascending order and print to the console
+            // if you need to keep ORIGINAL ORDER use OrderBy(); otherwise, use Sort() <- changes original array
+            Console.WriteLine("\nThe list in ascending order is: \n");
+            int[] numAscend = numbers.OrderBy(x => x).ToArray();
+            printer.Print(numAscend);
 
             //TODO: Order numbers in decsending order and print to the console
+            Console.WriteLine("\nThe list in descending order is: \n");
+            int[] numDescend = numbers.OrderByDescending(x => x).ToArray();
+            printer.Print(numDescend);
 
             //TODO: Print to the console only the numbers greater than 6
+            Console.WriteLine("\nThese are the numbers greater than 6: \n");
+            var greaterSix = numbers.Where(x => x > 6).ToArray();
+            printer.Print(greaterSix);
 
             //TODO: Order numbers in any order (acsending or desc) but only print 4 of them **foreach loop only!**
 
